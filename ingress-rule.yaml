@@ -2,15 +2,15 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: ingress-myservicea
-  annotations:
-    kubernetes.io/ingress.class: "nginx"    
+  #annotations:
+          #kubernetes.io/ingress.class: "nginx"    
     #cert-manager.io/issuer: "letsencrypt-staging"
 
 spec:
   ingressClassName: nginx
   defaultBackend:
     service:
-      name: webapp
+      name: webapp-service
       port:
         number: 80
   tls:
@@ -25,6 +25,6 @@ spec:
         pathType: Prefix
         backend:
           service:
-            name: webapp
+            name: webapp-service
             port:
               number: 80
